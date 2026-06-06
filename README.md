@@ -55,7 +55,7 @@ Once your manager is installed:
 
 ### Step 1: Get a Torn API key
 
-Go to **Torn &rarr; Settings &rarr; API Keys** and create a key with at minimum the **Bazaar** permission selected. Copy the key.
+Go to **Torn &rarr; Settings &rarr; API Keys** and create a key with at minimum the **Public Only** permission selected. Copy the key.
 
 ### Step 2: Sync your bazaar
 
@@ -172,7 +172,7 @@ Importing merges with your existing vault rather than replacing it. Items with m
 ## FAQ
 
 **Q: Nothing shows up after syncing.**
-A: Check your API key has the Bazaar permission. The script only stores items that have weapon/armor bonuses: standard unmodded items are skipped intentionally since they don't benefit from a styled listing.
+A: Check your API key. The script only stores items that have weapon/armor bonuses: standard unmodded items are skipped intentionally since they don't benefit from a styled listing.
 
 **Q: My prices in Torn changed but the thread still shows the old price.**
 A: Hit Sync again. Syncing refreshes bazaar prices. If you set a manual price on an item in the Vault tab, that overrides the bazaar price until you clear the price field.
