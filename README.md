@@ -1,6 +1,6 @@
-# ⚔ RW ThreadSmith
-
 <div align="center">
+
+# ⚔ RW ThreadSmith
 
 **Forum thread generator for Torn RW traders.**
 Build beautiful, styled item listings for your bazaar threads in seconds.
