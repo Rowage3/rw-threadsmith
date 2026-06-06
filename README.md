@@ -222,13 +222,40 @@ No data is sent anywhere except to `api.torn.com`. Nothing is collected. No exte
 - Built-in guide button linking to this repository
 
 ### v4.0.0
-- Vault storage system replacing ephemeral cache
-- 10 design themes
-- Per-item notes
-- Bulk status actions
-- Export / Import JSON backup
-- Old cache migration to vault format
-- Live preview overlay
+
+**Added:**
+- Permanent vault storage (items no longer expire after 24 hours)
+- Item status tracking (Active, Sold, Hidden) with color-coded badges
+- Tabbed interface (Sync, Vault, Output, Config)
+- Search, filter, and sort in Vault tab (by name, bonus, rarity, status, type)
+- Bulk actions for filtered items (set status, remove)
+- Per-item notes field with toggle to include in output
+- Live preview modal with copy-from-preview button
+- Export/Import JSON for vault, prices, and notes
+- Bazaar presence tracking (Listed / Vault badge)
+- Sync progress bar and cancel button
+- Post-sync summary (new / refreshed / skipped / total)
+- Vault stats panel (breakdown by status and listing type)
+- Generation summary (items included / hidden / sold / filtered)
+- Optional item counts in generated section headers
+- Compact card mode for dense item list display
+- "Include sold items in output" toggle
+
+**Changed:**
+- Theme system refactored (unified palette + item() + header() structure)
+- API throttle reduced from 750 ms to 700 ms
+- Header settings moved to Output tab
+- Storage keys renamed from rw_* to rwts_*
+- License changed from MIT to GPL-3.0-or-later
+- Full UI redesign with new color scheme and button variants
+
+**Removed:**
+- 24-hour cache expiry
+- Auto-clear prices on sync
+
+**Fixed:**
+- Prices and notes now persist across syncs
+- Old v3.9 cache data auto-migrated to new vault system on upgrade
 
 ---
 
