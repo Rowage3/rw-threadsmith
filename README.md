@@ -209,17 +209,31 @@ No data is sent anywhere except to `api.torn.com`. Nothing is collected. No exte
 ## Changelog
 
 ### v4.1.0
-- Panel width now clamps to viewport (`min(450px, 100vw - 24px)`): fixes invisible panel on narrow windows
-- Saved position validated against current viewport on load: no more off-screen panel after monitor changes
-- Drag boundary clamping: panel cannot be dragged off any edge
-- SPA listener guard: prevents duplicate event listeners on Torn's SPA navigation
-- Raised z-index to 999999 (panel) and 9999999 (preview) to clear Torn's own modals
-- Frosted Glass theme: added `-webkit-backdrop-filter` for full browser support
-- Unified `fmtNote()` usage across all themes: `includeNote` flag now consistently respected
-- Raised all low-contrast text colors across the panel UI
-- Replaced all em-dashes and special characters with HTML entities for encoding safety
-- All emoji in tab labels replaced with HTML entities for cross-browser consistency
-- Built-in guide button linking to this repository
+
+**Added:**
+- Built-in guide button in Config tab linking to the GitHub repository
+- Viewport-aware panel width using min() clamp so the panel never overflows on narrow windows
+- Saved position validation on startup so the panel cannot load off-screen after a monitor change
+- Drag boundary clamping so the panel cannot be pulled off any edge of the screen
+- SPA navigation guard preventing duplicate mouse event listeners on Torn page transitions
+
+**Changed:**
+- Panel z-index raised to 999999, preview overlay raised to 9999999 to clear Torn's own modals
+- All low-contrast text colors raised across the panel UI for better readability
+- textFaint raised from #9a9a9a to #aaa, textMain to #e8e8e8, textDim to #c0c0c0
+- baz-no label color raised from #777 to #aaa
+- Hidden status color raised from #888 to #aaa
+- gen-summary color raised from #777 to textDim
+- Vault stats empty-state text raised from #777 to textDim
+- Generated HTML section header color raised from #888 to #ccc
+- Ledger theme statsText raised from #a6927d to #c0a88d
+- Glow theme header description color raised from #888 to #ccc
+
+**Fixed:**
+- Frosted Glass theme now includes `-webkit-backdrop-filter` for full Safari and older Chromium support
+- fmtNote() usage unified across all themes so the includeNote flag is consistently respected in Split and Minimalist themes
+- Em-dashes and special characters replaced with HTML entities throughout the panel to prevent encoding issues across browsers
+- Emoji in tab labels replaced with HTML entities for cross-browser rendering consistency
 
 ### v4.0.0
 
