@@ -29,6 +29,39 @@ RW ThreadSmith connects to your Torn API, reads your bazaar, and generates fully
 
 ---
 
+## Screenshots
+
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="https://i.imgur.com/qkaMM2a.png" alt="Sync tab" width="100%"/>
+<br/><sub><b>Sync tab</b> - paste your API key, hit Sync, and watch the progress bar as your bazaar is scanned.</sub>
+</td>
+<td align="center" width="50%">
+<img src="https://i.imgur.com/nv0oCqq.png" alt="Vault tab with filters" width="100%"/>
+<br/><sub><b>Vault tab</b> - search, filter by bonus type / rarity / status, and manage every item in your collection.</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="https://i.imgur.com/zagl4PJ.png" alt="Output tab" width="100%"/>
+<br/><sub><b>Output tab</b> - set your thread title, description, grouping, theme, and category filters before generating.</sub>
+</td>
+<td align="center" width="50%">
+<img src="https://i.imgur.com/cNDWWOt.png" alt="Live preview" width="100%"/>
+<br/><sub><b>Live preview</b> - inspect the generated thread before copying. Upon generating, the code automatically gets on your clipboard, just Ctrl+V.</sub>
+</td>
+</tr>
+<tr>
+<td align="center" colspan="2">
+<img src="https://i.imgur.com/uozWMoq.png" alt="Config tab" width="50%"/>
+<br/><sub><b>Config tab</b> - toggle per-item notes, compact cards, note output, and section item counts.</sub>
+</td>
+</tr>
+</table>
+
+---
+
 ## Installation
 
 You need a userscript manager installed in your browser first.
