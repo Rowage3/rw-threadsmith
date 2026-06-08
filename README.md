@@ -5,7 +5,7 @@
 **Forum thread generator for Torn RW traders.**
 Build beautiful, styled item listings for your bazaar threads in seconds.
 
-[![Version](https://img.shields.io/badge/version-4.1.0-c9a84c?style=flat-square&labelColor=181818)](https://greasyfork.org/scripts/575393)
+[![Version](https://img.shields.io/badge/version-4.2.0-c9a84c?style=flat-square&labelColor=181818)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-4caf50?style=flat-square&labelColor=181818)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-ff6b6b?style=flat-square&labelColor=181818)](https://www.torn.com/forums.php)
 [![Free](https://img.shields.io/badge/price-FREE-c9a84c?style=flat-square&labelColor=181818)](#)
@@ -18,7 +18,7 @@ Build beautiful, styled item listings for your bazaar threads in seconds.
 
 ## What it does
 
-RW ThreadSmith connects to your Torn API, reads your bazaar, and generates fully-styled HTML forum threads you can paste directly into a Torn forum post. Pick a theme, set your prices, hit generate: done.
+RW ThreadSmith connects to your Torn API, reads your bazaar or Item Market listings, and generates fully-styled HTML forum threads you can paste directly into a Torn forum post. Pick a theme, set your prices, hit generate: done.
 
 - **Vault system**: Every item you sync is stored permanently. Items stay in your vault even after you sell or delist them, so you can mark them Sold or Hidden instead of losing history.
 - **10 visual themes**: Neon Box, Gradient Banner, Split Bar, Thin Stripe, Classic Ledger, Modern Minimalist, Retro Terminal, Military Crate, Luxury Boutique, Frosted Glass.
@@ -35,7 +35,7 @@ RW ThreadSmith connects to your Torn API, reads your bazaar, and generates fully
 <tr>
 <td align="center" width="50%">
 <img src="https://i.imgur.com/qkaMM2a.png" alt="Sync tab" width="100%"/>
-<br/><sub><b>Sync tab</b> - paste your API key, hit Sync, and watch the progress bar as your bazaar is scanned.</sub>
+<br/><sub><b>Sync tab</b> - paste your API key, hit Sync, and watch the progress bar as your bazaar or Item Market is scanned.</sub>
 </td>
 <td align="center" width="50%">
 <img src="https://i.imgur.com/nv0oCqq.png" alt="Vault tab with filters" width="100%"/>
@@ -54,8 +54,8 @@ RW ThreadSmith connects to your Torn API, reads your bazaar, and generates fully
 </tr>
 <tr>
 <td align="center" colspan="2">
-<img src="https://i.imgur.com/uozWMoq.png" alt="Config tab" width="50%"/>
-<br/><sub><b>Config tab</b> - toggle per-item notes, compact cards, note output, and section item counts.</sub>
+<img src="https://i.imgur.com/FYmWaTE.png" alt="Config tab" width="50%"/>
+<br/><sub><b>Config tab</b> - choose sync source, toggle per-item notes, compact cards, note output, and section item counts.</sub>
 </td>
 </tr>
 </table>
@@ -88,22 +88,32 @@ Once your manager is installed:
 
 ### Step 1: Get a Torn API key
 
-Go to **Torn &rarr; Settings &rarr; API Keys** and create a key with at minimum the **Public Only** permission selected. Copy the key.
+Go to **Torn &rarr; Settings &rarr; API Keys** and create a key. The permission level you need depends on your sync source:
 
-### Step 2: Sync your bazaar
+- **Bazaar sync** (default): **Public Only** permission is sufficient.
+- **Item Market sync**: A **Limited** access key is required.
 
-Open the **Sync** tab in the panel. Paste your API key and hit **Sync**. The script will scan every item in your bazaar and fetch its stats and bonuses from the Torn API. Items with no bonuses are skipped automatically.
+Copy the key.
+
+### Step 2: Sync your items
+
+Open the **Sync** tab in the panel. Paste your API key and hit **Sync**.
+
+By default the script scans your **Bazaar**. If your weapons are listed on the **Item Market** instead, enable **Scan Item Market instead of Bazaar** in the Config tab first.
+
+- **Bazaar mode**: Fetches each item's stats and bonuses from the Torn API individually. Items with no bonuses are skipped automatically.
+- **Item Market mode**: Fetches all your Item Market listings in paginated batches. Item stats and bonuses are included directly in the response - no secondary API calls needed, so syncing is faster.
 
 Syncing is rate-limited to protect your API key (~85 requests/minute). A progress bar shows you where it is. You can cancel at any time: items already fetched are saved.
 
 ### Step 3: Review your vault
 
-Switch to the **Vault** tab. Every synced item appears here with its rarity color, stats, bonuses, and bazaar listing status.
+Switch to the **Vault** tab. Every synced item appears here with its rarity color, stats, bonuses, and listing status.
 
 From here you can:
 
 - **Set status**: `Active` items appear in generated threads. `Sold` items appear with a SOLD badge (toggle in Output settings). `Hidden` items are excluded entirely.
-- **Set a manual price**: Override the bazaar price shown in the thread. Accepts formats like `5m`, `1.5b`, `750k`, or a raw number.
+- **Set a manual price**: Override the listing price shown in the thread. Accepts formats like `5m`, `1.5b`, `750k`, or a raw number.
 - **Add a note**: Enable the notes field in Config, then type anything. Notes are optional and only appear in the thread if you enable "Include item notes in output."
 - **Remove**: Permanently delete an item from the vault.
 
@@ -128,13 +138,13 @@ Switch to the **Output** tab.
 
 The vault is the core of RW ThreadSmith. Understanding it saves confusion.
 
-**Items stay after you delist them.** When you remove an item from your bazaar in Torn, it disappears from your bazaar listing: but it stays in your vault. This is intentional. You can mark it `Sold` (it shows with a SOLD badge in threads) or `Hidden` (excluded from all output). This way your thread history is preserved.
+**Items stay after you delist them.** When you remove an item from your bazaar or Item Market in Torn, it disappears from your listing: but it stays in your vault. This is intentional. You can mark it `Sold` (it shows with a SOLD badge in threads) or `Hidden` (excluded from all output). This way your thread history is preserved.
 
-**Syncing updates prices, not item data.** Each sync refreshes the bazaar price of items already in the vault. It only makes new API calls for items it has never seen before. This is why syncing gets faster over time.
+**Syncing updates prices, not item data.** Each sync refreshes the listing price of items already in the vault. It only processes new items it has never seen before. This is why syncing gets faster over time.
 
-**The vault never auto-deletes items.** Only you can remove them, via the ✕ button or bulk remove. Clearing your Torn bazaar does not clear the vault.
+**The vault never auto-deletes items.** Only you can remove them, via the ✕ button or bulk remove. Clearing your Torn listings does not clear the vault.
 
-**Vault-only vs Listed.** In the Vault tab, items show either `Listed` (currently in your Torn bazaar) or `Vault` (not currently listed). This is updated on every sync.
+**Vault-only vs Listed.** In the Vault tab, items show either `Listed` (currently in your Torn bazaar or Item Market) or `Vault` (not currently listed). This is updated on every sync.
 
 ---
 
@@ -183,6 +193,7 @@ All themes use the item's rarity color (Yellow, Orange, Red, White) as the prima
 
 | Option | Default | Description |
 |---|---|---|
+| Scan Item Market instead of Bazaar | Off | When enabled, Sync fetches your Item Market listings instead of your Bazaar. Requires a Limited API key. |
 | Show per-item notes field | Off | Reveals a text input on each vault card for writing notes |
 | Compact item cards | Off | Hides stats and bonuses from vault cards to save space |
 | Include item notes in output | Off | Notes appear in the generated thread HTML |
@@ -205,10 +216,13 @@ Importing merges with your existing vault rather than replacing it. Items with m
 ## FAQ
 
 **Q: Nothing shows up after syncing.**
-A: Check your API key. The script only stores items that have weapon/armor bonuses: standard unmodded items are skipped intentionally since they don't benefit from a styled listing.
+A: Check your API key and make sure its permission level matches your sync source (Public for Bazaar, Limited for Item Market). The script only stores items that have weapon/armor bonuses: standard unmodded items are skipped intentionally since they don't benefit from a styled listing.
+
+**Q: My weapons are on the Item Market, not the Bazaar.**
+A: Enable **Scan Item Market instead of Bazaar** in the Config tab before syncing. You'll also need a Limited access API key - a Public Only key will not have permission to read Item Market listings.
 
 **Q: My prices in Torn changed but the thread still shows the old price.**
-A: Hit Sync again. Syncing refreshes bazaar prices. If you set a manual price on an item in the Vault tab, that overrides the bazaar price until you clear the price field.
+A: Hit Sync again. Syncing refreshes listing prices. If you set a manual price on an item in the Vault tab, that overrides the listing price until you clear the price field.
 
 **Q: The panel is off-screen / I can't see it.**
 A: Click the **Reset** button in the panel header (if you can see it), or wait for the next page load: the panel position is validated against your viewport on startup. If you used a very small browser window before, it will have been clamped to a valid position on reload.
@@ -240,6 +254,17 @@ No data is sent anywhere except to `api.torn.com`. Nothing is collected. No exte
 ---
 
 ## Changelog
+
+### v4.2.0
+
+**Added:**
+- Item Market sync mode: enable "Scan Item Market instead of Bazaar" in the Config tab to fetch listings from `/v2/user/itemmarket` instead of the Bazaar endpoint. Requires a Limited API key.
+- Paginated Item Market fetching: all listing pages are retrieved automatically by following the `_metadata.links.next` cursor.
+- Item Market sync is faster than Bazaar sync for large inventories: item stats and bonuses are included inline in the listing response, so no secondary per-item API calls are needed.
+
+**Changed:**
+- Config tab reorganised: Sync Source section added at the top, above Item Card Display options.
+- API key note in Quickstart updated to reflect that Limited access is required for Item Market mode.
 
 ### v4.1.0
 
