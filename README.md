@@ -35,28 +35,28 @@ RW ThreadSmith connects to your Torn API, reads your bazaar or Item Market listi
 <table>
 <tr>
 <td align="center" width="50%">
-<img src="https://i.imgur.com/qkaMM2a.png" alt="Sync tab" width="100%"/>
+<img src="https://i.imgur.com/esiNfs7.png" alt="Sync tab" width="100%"/>
 <br/><sub><b>Sync tab</b> - paste your API key, hit Sync, and watch the progress bar as your bazaar or Item Market is scanned.</sub>
 </td>
 <td align="center" width="50%">
-<img src="https://i.imgur.com/nv0oCqq.png" alt="Vault tab with filters" width="100%"/>
+<img src="https://i.imgur.com/7Bi3i8D.png" alt="Vault tab with filters" width="100%"/>
 <br/><sub><b>Vault tab</b> - search, filter by bonus type / rarity / status, and manage every item in your collection.</sub>
 </td>
 </tr>
 <tr>
 <td align="center" width="50%">
-<img src="https://i.imgur.com/zagl4PJ.png" alt="Output tab" width="100%"/>
+<img src="https://i.imgur.com/jGAeTzR.png" alt="Output tab" width="100%"/>
 <br/><sub><b>Output tab</b> - set your thread title, description, per-section grouping and sorting, theme, and filters before generating.</sub>
 </td>
 <td align="center" width="50%">
-<img src="https://i.imgur.com/cNDWWOt.png" alt="Live preview" width="100%"/>
+<img src="https://i.imgur.com/U5bVITt.png" alt="Live preview" width="100%"/>
 <br/><sub><b>Live preview</b> - inspect the generated thread before copying. Upon generating, the code automatically gets on your clipboard, just Ctrl+V.</sub>
 </td>
 </tr>
 <tr>
 <td align="center" colspan="2">
-<img src="https://i.imgur.com/FYmWaTE.png" alt="Config tab" width="50%"/>
-<br/><sub><b>Config tab</b> - choose sync source, toggle per-item notes, compact cards, note output, and section item counts.</sub>
+<img src="https://i.imgur.com/pI9clPp.png" alt="Config tab" width="50%"/>
+<br/><sub><b>Config tab</b> - choose choose sync source, toggle per-item notes, compact cards, note output, and section item counts.</sub>
 </td>
 </tr>
 </table>
@@ -196,6 +196,7 @@ Each section has a primary **Sort by** and an optional **then by** secondary sor
 | Name: A to Z | Weapons and Armor |
 | Name: Z to A | Weapons and Armor |
 | Rarity | Weapons and Armor |
+| Rarity (reversed) | Weapons and Armor |
 | Weapon bonus: A to Z | Weapons and Armor |
 | Bonus count: most first | Weapons and Armor |
 | Quality: high to low | Weapons and Armor |
@@ -307,6 +308,7 @@ No data is sent anywhere except to `api.torn.com`. Nothing is collected. No exte
 **Added:**
 - Two-level sorting per section. Each of Weapons and Armor now has a primary **Sort by** plus an optional **then by** secondary sort. The secondary only orders items the primary leaves tied, and item name is always applied as the final tiebreak.
 - Same-field protection: once a field is chosen as the primary sort, its matching options are disabled in the "then by" list, so a redundant second level (for example Value high to low then Value low to high) cannot be selected.
+- `Rarity (reversed)` added as a sorting option for both Weapons and Armor.
 
 **Changed:**
 - Sort comparators rebuilt to be composable, so primary and secondary keys chain cleanly without one swallowing the other.
