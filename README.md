@@ -5,7 +5,7 @@
 **Forum thread generator for Torn RW traders.**
 Build beautiful, styled item listings for your bazaar threads in seconds.
 
-[![Version](https://img.shields.io/badge/version-4.2.0-c9a84c?style=flat-square&labelColor=181818)](https://greasyfork.org/scripts/575393)
+[![Version](https://img.shields.io/badge/version-4.4.0-c9a84c?style=flat-square&labelColor=181818)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-4caf50?style=flat-square&labelColor=181818)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-ff6b6b?style=flat-square&labelColor=181818)](https://www.torn.com/forums.php)
 [![Free](https://img.shields.io/badge/price-FREE-c9a84c?style=flat-square&labelColor=181818)](#)
@@ -21,6 +21,7 @@ Build beautiful, styled item listings for your bazaar threads in seconds.
 RW ThreadSmith connects to your Torn API, reads your bazaar or Item Market listings, and generates fully-styled HTML forum threads you can paste directly into a Torn forum post. Pick a theme, set your prices, hit generate: done.
 
 - **Vault system**: Every item you sync is stored permanently. Items stay in your vault even after you sell or delist them, so you can mark them Sold or Hidden instead of losing history.
+- **Per-section layout and sorting**: Configure weapons and armor independently. Group each section by type, rarity, or bonus, then order it with a primary and an optional secondary sort. Split armor into its own section and pull double-bonus gear into its own block.
 - **10 visual themes**: Neon Box, Gradient Banner, Split Bar, Thin Stripe, Classic Ledger, Modern Minimalist, Retro Terminal, Military Crate, Luxury Boutique, Frosted Glass.
 - **Live preview**: See exactly what your thread will look like before copying.
 - **Per-item notes**: Add a private note to any item (e.g. "negotiable", "reserved for X") that can optionally appear in the generated thread.
@@ -45,7 +46,7 @@ RW ThreadSmith connects to your Torn API, reads your bazaar or Item Market listi
 <tr>
 <td align="center" width="50%">
 <img src="https://i.imgur.com/zagl4PJ.png" alt="Output tab" width="100%"/>
-<br/><sub><b>Output tab</b> - set your thread title, description, grouping, theme, and category filters before generating.</sub>
+<br/><sub><b>Output tab</b> - set your thread title, description, per-section grouping and sorting, theme, and filters before generating.</sub>
 </td>
 <td align="center" width="50%">
 <img src="https://i.imgur.com/cNDWWOt.png" alt="Live preview" width="100%"/>
@@ -124,11 +125,13 @@ Use the search bar, filters (bonus type, rarity, status), and sort order to navi
 Switch to the **Output** tab.
 
 1. Enter a thread title and description: these appear as a styled header above your items.
-2. Choose how to group items: by **Category** (Primary, Secondary, Melee, Armor, Other) or by **Rarity** (Yellow, Orange, Red, White).
-3. Optionally filter to a single category.
-4. Pick a **design theme**.
-5. Hit **Preview** to see it in a popup, or **Generate &amp; Copy** to copy the HTML directly to your clipboard.
-6. Paste into your Torn forum post.
+2. Under **Layout & Sorting**, optionally restrict the output to a single category with **Show only**.
+3. Configure the **Weapons** section: pick how to **Group by** (no grouping, weapon type, rarity, or weapon bonus), a primary **Sort by**, and an optional **then by** secondary sort.
+4. Decide whether to **Separate armor into its own section** at the bottom. When on, the **Armor** section gets its own grouping, sorting, heading text, and an optional theme that can differ from the weapons theme.
+5. Optionally **Separate double-bonus gear** into its own block.
+6. Pick a **design theme**.
+7. Hit **Preview** to see it in a popup, or **Generate &amp; Copy** to copy the HTML directly to your clipboard.
+8. Paste into your Torn forum post.
 
 > Torn's forum editor accepts raw HTML. Paste the generated code into the HTML source view of your post.
 
@@ -163,13 +166,59 @@ The vault is the core of RW ThreadSmith. Understanding it saves confusion.
 | **Luxury Boutique** | Italic Georgia serif, gold price text, refined spacing. |
 | **Frosted Glass** | Semi-transparent dark cards with blur. Modern UI look. |
 
-All themes use the item's rarity color (Yellow, Orange, Red, White) as the primary accent.
+All themes use the item's rarity color (Yellow, Orange, Red, White) as the primary accent. The Armor section can use its own theme or match the weapons theme.
 
 ---
 
-## Filters and sorting
+## Layout and sorting
 
-### Vault tab filters
+The Output tab gives weapons and armor fully independent layout controls, so you can present each section the way that suits it. For example, sort weapons by value while sorting armor by rarity.
+
+### Group by
+
+Each section can be split into headed groups, or left as one flat list.
+
+| Group by | Result |
+|---|---|
+| No grouping (flat list) | One continuous list, no section headers |
+| Weapon type | Primary, Secondary, Melee, Other (weapons section only) |
+| Rarity | Yellow, Orange, Red, White |
+| Weapon bonus | One group per primary bonus, headed by the bonus name |
+
+### Sort by and then by
+
+Each section has a primary **Sort by** and an optional **then by** secondary sort. The secondary only orders items that the primary leaves tied, and a name sort is always applied last as a final tiebreak. Picking the same field in both slots is blocked, so you cannot create a second level that does nothing.
+
+| Sort option | Available in |
+|---|---|
+| Value: high to low | Weapons and Armor |
+| Value: low to high | Weapons and Armor |
+| Name: A to Z | Weapons and Armor |
+| Name: Z to A | Weapons and Armor |
+| Rarity | Weapons and Armor |
+| Weapon bonus: A to Z | Weapons and Armor |
+| Bonus count: most first | Weapons and Armor |
+| Quality: high to low | Weapons and Armor |
+| Weapon type | Weapons only |
+| Damage: high to low | Weapons only |
+| Armor rating: high to low | Armor only |
+
+Items with no price (shown as Offer) and items missing the stat being sorted on sink to the bottom of that sort instead of mixing into the middle.
+
+### Section options
+
+| Setting | What it does |
+|---|---|
+| Show only | Restrict the whole output to one category (Primary, Secondary, Melee, Armor, Other) |
+| Separate armor into its own section | Moves all armor to its own section at the bottom with its own group, sort, heading, and theme |
+| Armor heading | Custom heading text for the armor section |
+| Armor theme | Use a different theme for armor, or match the weapons theme |
+| Separate double-bonus gear | Pulls items with two or more bonuses into their own block within a section |
+| Include SOLD items | Toggle whether Sold items appear in the thread |
+
+---
+
+## Filters and sorting (Vault tab)
 
 | Filter | What it does |
 |---|---|
@@ -178,14 +227,6 @@ All themes use the item's rarity color (Yellow, Orange, Red, White) as the prima
 | Rarity | Yellow / Orange / Red / White |
 | Status | Active / Sold / Hidden |
 | Sort | Name A-Z, Name Z-A, Rarity, Type, Status |
-
-### Output tab filters
-
-| Setting | What it does |
-|---|---|
-| Group by | Category or Rarity determines section headers |
-| Category filter | Restrict output to one weapon/armor type |
-| Include SOLD items | Toggle whether Sold items appear in the thread |
 
 ---
 
@@ -224,6 +265,12 @@ A: Enable **Scan Item Market instead of Bazaar** in the Config tab before syncin
 **Q: My prices in Torn changed but the thread still shows the old price.**
 A: Hit Sync again. Syncing refreshes listing prices. If you set a manual price on an item in the Vault tab, that overrides the listing price until you clear the price field.
 
+**Q: How do the "Sort by" and "then by" options interact?**
+A: The primary "Sort by" decides the order. The "then by" secondary only steps in to break ties the primary left behind, and item name is always the final tiebreak. Order matters: sorting by bonus then value is not the same as value then bonus. You cannot pick the same field in both slots, since the second level would have nothing left to resolve.
+
+**Q: My armor is sorted differently from my weapons. Is that a bug?**
+A: No, that is the point. Weapons and armor each have their own Group by, Sort by, and then by. Set them however you like, or turn off "Separate armor into its own section" to fold armor in with the weapon settings.
+
 **Q: The panel is off-screen / I can't see it.**
 A: Click the **Reset** button in the panel header (if you can see it), or wait for the next page load: the panel position is validated against your viewport on startup. If you used a very small browser window before, it will have been clamped to a valid position on reload.
 
@@ -254,6 +301,29 @@ No data is sent anywhere except to `api.torn.com`. Nothing is collected. No exte
 ---
 
 ## Changelog
+
+### v4.4.0
+
+**Added:**
+- Two-level sorting per section. Each of Weapons and Armor now has a primary **Sort by** plus an optional **then by** secondary sort. The secondary only orders items the primary leaves tied, and item name is always applied as the final tiebreak.
+- Same-field protection: once a field is chosen as the primary sort, its matching options are disabled in the "then by" list, so a redundant second level (for example Value high to low then Value low to high) cannot be selected.
+
+**Changed:**
+- Sort comparators rebuilt to be composable, so primary and secondary keys chain cleanly without one swallowing the other.
+
+### v4.3.0
+
+**Added:**
+- Independent layout and sorting per section. Weapons and Armor are configured separately, so you can sort weapons by value while sorting armor by rarity.
+- **Group by** options: No grouping (flat list), Weapon type, Rarity, or Weapon bonus. Section headers follow your choice.
+- Expanded sort options: Value high to low, Value low to high, Name A to Z, Name Z to A, Rarity, Weapon bonus A to Z, Bonus count, Quality, Weapon type, Damage, Armor rating.
+- **Separate armor into its own section** at the bottom, with its own grouping, sorting, heading text, and an optional theme override that can differ from the weapons theme.
+- **Separate double-bonus gear** into its own block within a section.
+- Unpriced items (shown as Offer) and items missing the sorted stat sink to the bottom of value and stat sorts instead of mixing in.
+
+**Changed:**
+- The Output tab "Layout" area is now a fuller "Layout & Sorting" panel split into Weapons and Armor controls.
+- The old single "Group: Category / Group: Rarity" dropdown is superseded by the per-section Group by selectors. Existing saved grouping carries over on upgrade.
 
 ### v4.2.0
 
