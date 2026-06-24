@@ -5,7 +5,7 @@
 **Forum thread generator for Torn ranked-war traders.**
 Sync your listings, price them, and generate a fully-styled forum thread in seconds.
 
-[![Version](https://img.shields.io/badge/version-4.5.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
+[![Version](https://img.shields.io/badge/version-4.6.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-74c0fc?style=flat-square&labelColor=222)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-e0b73e?style=flat-square&labelColor=222)](https://www.torn.com/forums.php)
 [![Free](https://img.shields.io/badge/price-FREE-82c91e?style=flat-square&labelColor=222)](#)
@@ -31,7 +31,7 @@ RW ThreadSmith lives on Torn's forum page. It reads your bazaar or Item Market l
 - **Vault storage** - every synced item is kept permanently. Items stay after you delist or sell them, so you mark them Sold/Hidden instead of losing history.
 - **Mug-protection markup** - over-price your listings to deter buy-muggers, then have that markup automatically stripped from the prices shown in your thread. [Details below.](#mug-protection-markup)
 - **Per-section layout & two-level sorting** - configure weapons and armor independently; group by type/rarity/bonus and sort with a primary + secondary key.
-- **10 visual themes** - Neon Box, Gradient Banner, Split Bar, Thin Stripe, Classic Ledger, Modern Minimalist, Retro Terminal, Military Crate, Luxury Boutique, Frosted Glass.
+- **10 visual themes** - Neon Box, Gradient Banner, Split Bar, Thin Stripe, Classic Ledger, Modern Minimalist, Military Crate, Luxury Boutique, Slate Card, Spec Sheet.
 - **Live preview** - see the exact thread before copying.
 - **Per-item notes, bulk actions, export/import** - annotate items, set whole filtered selections at once, and back the vault up as JSON.
 
@@ -176,16 +176,16 @@ It's a true reversal, not a flat subtraction - a +20% markup is divided back out
 
 | Theme | Style |
 |---|---|
-| **Neon Box** | Rarity-colored glowing border on a dark card. High contrast. |
+| **Neon Box** | Rarity-colored border on a dark card. High contrast. |
 | **Gradient Banner** | Horizontal gradient bleeding from the rarity color. Clean, wide. |
 | **Split Bar** | Two-tone card with a rarity underline. Structured. |
-| **Thin Stripe** | Dense rows with a thick left rarity stripe. Space-efficient. |
-| **Classic Ledger** | Parchment tones, serif, dashed borders. Old-school. |
+| **Thin Stripe** | Dense rows with a left rarity stripe. Space-efficient. |
+| **Classic Ledger** | Parchment tones, serif type, dashed dividers. Vintage invoice. |
 | **Modern Minimalist** | Solid rarity-colored cards. Very clean. |
-| **Retro Terminal** | Monospace green-on-black command-line look. |
-| **Military Crate** | Impact font, dark headers, hard edges. |
+| **Military Crate** | Heavy bold font, dark headers, hard edges. |
 | **Luxury Boutique** | Italic serif, gold price text, refined spacing. |
-| **Frosted Glass** | Semi-transparent blurred dark cards. |
+| **Slate Card** | Professional dark card with a left rarity tab. Restrained, readable. |
+| **Spec Sheet** | Manufacturer-datasheet look with labelled stats. Technical, premium. |
 
 All themes use the item's rarity color (Yellow / Orange / Red / White) as the accent. Armor can use its own theme or match weapons.
 
@@ -319,6 +319,19 @@ No data is sent anywhere except `api.torn.com`. Nothing is collected. No externa
 ---
 
 ## Changelog
+
+### v4.6.0
+
+**Added**
+- Two new themes: **Slate Card** (professional dark card with a left rarity tab) and **Spec Sheet** (manufacturer-datasheet look with labelled stats).
+
+**Changed**
+- **Themes are now mobile-friendly** - every design wraps cleanly on phones instead of squeezing name and price onto one cramped line.
+- **Classic Ledger** redrawn in clean serif (no more monospace); **Military Crate** moved to a phone-safe heavy font.
+- New-theme headers are centered to match the rest.
+
+**Removed**
+- Retro Terminal and Frosted Glass themes (Frosted Glass's blur never rendered in the forum). Theme count stays at 10.
 
 ### v4.5.0
 
