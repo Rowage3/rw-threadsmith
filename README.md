@@ -20,6 +20,9 @@ Sync your listings, price them, and generate a fully-styled forum thread in seco
 
 ---
 
+> [!NOTE]
+> **TL;DR** Install, open the panel on `torn.com/forums.php`, paste your API key, hit Sync. Pick a theme, set prices, and copy a fully-styled forum thread of your listings.
+
 ## What it does
 
 RW ThreadSmith lives on Torn's forum page. It reads your bazaar or Item Market listings through the Torn API, stores them in a permanent vault, and turns them into a styled HTML thread you can paste straight into a forum post. Pick a theme, set prices, hit generate.
@@ -32,11 +35,29 @@ RW ThreadSmith lives on Torn's forum page. It reads your bazaar or Item Market l
 - **Live preview** - see the exact thread before copying.
 - **Per-item notes, bulk actions, export/import** - annotate items, set whole filtered selections at once, and back the vault up as JSON.
 
+```mermaid
+flowchart LR
+    K["Your API key"] --> API["Torn API"]
+    API --> Sync["Sync"]
+    Sync --> Vault["Permanent vault"]
+    Vault --> Output["Output: theme, grouping, prices"]
+    Output --> Thread["Styled forum thread"]
+```
+
+### At a glance
+
+| Tab | What you do here |
+|---|---|
+| **Sync** | Paste your key, scan bazaar or Item Market, back up or restore. |
+| **Vault** | Search, filter, set prices, statuses, and notes per item. |
+| **Output** | Header, per-section grouping and sorting, theme, then generate. |
+| **Config** | Sync source, mug-protection markup, display toggles. |
+
 ---
 
 ## The panel
 
-> The whole tool lives in one draggable panel on `forums.php`, opened from a launcher button in the bottom-left corner. Four tabs:
+The whole tool lives in one draggable panel on `forums.php`, opened from a launcher button in the bottom-left corner. Four tabs:
 
 <table>
   <tr>
@@ -79,6 +100,7 @@ Then:
 2. Open any page on `torn.com/forums.php`.
 3. The **⚔ launcher button** appears in the bottom-left corner. Click it to open the panel.
 
+> [!IMPORTANT]
 > The script only runs on `torn.com/forums.php`. It touches no other page or site.
 
 ---
@@ -115,7 +137,8 @@ Search, filters (bonus / rarity / status), and sort handle large inventories. Bu
 
 On the **Output** tab: set a title/description, configure grouping and sorting per section, pick a theme, then **Preview** or **Generate & Copy**. Paste the result into your forum post's **HTML source view**.
 
-> Torn's forum editor accepts raw HTML - use the `<>`/Source button, not the visual editor.
+> [!TIP]
+> Torn's forum editor accepts raw HTML. Use the `<>`/Source button, not the visual editor.
 
 ---
 
@@ -242,7 +265,10 @@ Unpriced items (shown as Offer) and items missing the sorted stat sink to the bo
 **Export JSON** (Sync tab) downloads your vault, prices, notes, and markup setting as a `.json`. **Import JSON** loads it back - any browser, any machine. Importing **merges** with your existing vault (matching UIDs overwrite local copies).
 
 - **Clear Prices/Notes** wipes manual prices and notes, keeps vault items.
-- **Clear Vault** removes everything. Export first.
+- **Clear Vault** removes everything.
+
+> [!CAUTION]
+> Clear Vault is irreversible and deletes all items, prices, notes, and statuses. Export a backup first.
 
 ---
 
