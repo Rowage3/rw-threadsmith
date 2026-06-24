@@ -5,16 +5,22 @@
 **Forum thread generator for Torn ranked-war traders.**
 Sync your listings, price them, and generate a fully-styled forum thread in seconds.
 
-[![Version](https://img.shields.io/badge/version-4.6.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
+[![Version](https://img.shields.io/badge/version-4.7.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-74c0fc?style=flat-square&labelColor=222)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-e0b73e?style=flat-square&labelColor=222)](https://www.torn.com/forums.php)
 [![Free](https://img.shields.io/badge/price-FREE-82c91e?style=flat-square&labelColor=222)](#)
 
 [Install](#installation) &nbsp;·&nbsp; [Quickstart](#quickstart) &nbsp;·&nbsp; [Mug markup](#mug-protection-markup) &nbsp;·&nbsp; [Themes](#themes) &nbsp;·&nbsp; [FAQ](#faq)
 
-<img src="assets/examplepreview.png" alt="A generated RW ThreadSmith forum thread" width="760">
+<img src="assets/examplepreview2.png" alt="A generated RW ThreadSmith forum thread" width="760">
 
 <sub>A generated thread (Neon Box theme) - the live preview before copying.</sub>
+
+<br><br>
+
+<img src="assets/posttest.png" alt="A live RW ThreadSmith thread posted on the Torn forum" width="760">
+
+<sub>The same kind of thread posted live on the Torn forum - what buyers actually see.</sub>
 
 </div>
 
@@ -62,21 +68,21 @@ The whole tool lives in one draggable panel on `forums.php`, opened from a launc
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/sync.png" alt="Sync tab" width="400"><br>
+      <img src="assets/sync2.png" alt="Sync tab" width="400"><br>
       <sub><b>Sync</b> - paste your API key, scan your bazaar or Item Market, see vault status and backup/restore.</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/vault.png" alt="Vault tab" width="400"><br>
+      <img src="assets/vault2.png" alt="Vault tab" width="400"><br>
       <sub><b>Vault</b> - search, filter by bonus/rarity/status, set prices, statuses and notes per item.</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/output.png" alt="Output tab" width="400"><br>
-      <sub><b>Output</b> - thread header, per-section grouping &amp; sorting, theme, filters, then generate.</sub>
+      <img src="assets/output2.png" alt="Output tab" width="400"><br>
+      <sub><b>Output</b> - thread header, per-section grouping &amp; sorting, theme, item images, filters, then generate.</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/config.png" alt="Config tab" width="400"><br>
+      <img src="assets/config2.png" alt="Config tab" width="400"><br>
       <sub><b>Config</b> - sync source, mug-protection markup, display toggles.</sub>
     </td>
   </tr>
@@ -232,6 +238,7 @@ Unpriced items (shown as Offer) and items missing the sorted stat sink to the bo
 | Armor theme | Different theme for armor, or match weapons |
 | Separate double-bonus gear | Pulls 2+ bonus items into their own block |
 | Include SOLD items | Whether Sold items appear in the thread |
+| Show item images | Adds each item's in-game image to its card, hotlinked from Torn's CDN (all themes except Thin Stripe) |
 
 ---
 
@@ -319,6 +326,11 @@ No data is sent anywhere except `api.torn.com`. Nothing is collected. No externa
 ---
 
 ## Changelog
+
+### v4.7.0
+
+**Added**
+- **Item images** - an optional "Show item images" toggle on the Output tab adds each weapon/armor's in-game image to its card, hotlinked from Torn's own CDN (no hosting, no setup). Works across every theme except Thin Stripe (too dense to fit an image cleanly).
 
 ### v4.6.0
 
