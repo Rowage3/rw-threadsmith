@@ -5,7 +5,7 @@
 **Forum thread generator for Torn ranked-war traders.**
 Sync your listings, price them, and generate a fully-styled forum thread in seconds.
 
-[![Version](https://img.shields.io/badge/version-4.7.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
+[![Version](https://img.shields.io/badge/version-4.8.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-74c0fc?style=flat-square&labelColor=222)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-e0b73e?style=flat-square&labelColor=222)](https://www.torn.com/forums.php)
 [![Free](https://img.shields.io/badge/price-FREE-82c91e?style=flat-square&labelColor=222)](#)
@@ -326,6 +326,11 @@ No data is sent anywhere except `api.torn.com`. Nothing is collected. No externa
 ---
 
 ## Changelog
+
+### v4.8.0
+
+**Changed**
+- All Torn API calls now run on API v2. The Bazaar scan moved from `/user/?selections=bazaar` to `/v2/user/bazaar`, and the per-item lookup from `/torn/{id}?selections=itemdetails` to `/v2/torn/{id}/itemdetails`. Item Market sync was already on v2. Vault contents and thread output are unchanged.
 
 ### v4.7.0
 
