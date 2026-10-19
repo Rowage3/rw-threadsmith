@@ -1,89 +1,85 @@
 <div align="center">
 
-# ⚔ RW ThreadSmith
+<img src="assets/icon.svg" width="88" height="88" alt="RW ThreadSmith anvil icon">
 
-**Forum thread generator for Torn ranked-war traders.**
-Sync your listings, price them, and generate a fully-styled forum thread in seconds.
+# RW ThreadSmith
 
-[![Version](https://img.shields.io/badge/version-4.8.0-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
+**Sell your ranked-war gear with a forum post that looks designed, not pasted.**
+Sync your bazaar, inventory or Item Market, price everything in one vault, and export polished images of your shop ready to drop into a Torn forum post.
+
+[![Version](https://img.shields.io/badge/version-6.2.1-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-74c0fc?style=flat-square&labelColor=222)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-e0b73e?style=flat-square&labelColor=222)](https://www.torn.com/forums.php)
+[![Torn PDA](https://img.shields.io/badge/Torn%20PDA-supported-b197fc?style=flat-square&labelColor=222)](https://github.com/Manuito83/torn-pda)
 [![Free](https://img.shields.io/badge/price-FREE-82c91e?style=flat-square&labelColor=222)](#)
 
-[Install](#installation) &nbsp;·&nbsp; [Quickstart](#quickstart) &nbsp;·&nbsp; [Mug markup](#mug-protection-markup) &nbsp;·&nbsp; [Themes](#themes) &nbsp;·&nbsp; [FAQ](#faq)
+[Install](#installation) &nbsp;·&nbsp; [Quickstart](#quickstart) &nbsp;·&nbsp; [Designs](#designs) &nbsp;·&nbsp; [API keys](#api-keys) &nbsp;·&nbsp; [Torn PDA](#torn-pda) &nbsp;·&nbsp; [FAQ](#faq) &nbsp;·&nbsp; [Changelog](#changelog)
 
-<img src="assets/examplepreview2.png" alt="A generated RW ThreadSmith forum thread" width="760">
+<img src="assets/design-boutique.png" alt="A shop image rendered in the Luxury Boutique design" width="420"> <img src="assets/design-brutal.png" alt="A shop image rendered in the Neo Brutalist design" width="420">
 
-<sub>A generated thread (Neon Box theme) - the live preview before copying.</sub>
-
-<br><br>
-
-<img src="assets/posttest.png" alt="A live RW ThreadSmith thread posted on the Torn forum" width="760">
-
-<sub>The same kind of thread posted live on the Torn forum - what buyers actually see.</sub>
+<sub>Two of the 14 designs. Every image in this README was rendered by the script itself.</sub>
 
 </div>
 
 ---
 
 > [!NOTE]
-> **TL;DR** Install, open the panel on `torn.com/forums.php`, paste your API key, hit Sync. Pick a theme, set prices, and copy a fully-styled forum thread of your listings.
+> **TL;DR** Install, open any Torn forum page, click **RW ThreadSmith** in your **My Forums** list, paste an API key and press **Sync**. Pick a design, press **Generate images**, save them, and add them to your post in order.
 
 ## What it does
 
-RW ThreadSmith lives on Torn's forum page. It reads your bazaar or Item Market listings through the Torn API, stores them in a permanent vault, and turns them into a styled HTML thread you can paste straight into a forum post. Pick a theme, set prices, hit generate.
+RW ThreadSmith lives inside Torn's own forum page. It reads your listings through the Torn API, keeps them in a permanent vault, and renders your shop as high-resolution images in one of 14 designs. Images get around the problems with HTML threads: no fighting the forum editor, no character limits, and no layouts breaking on phones.
 
-- **Native Torn look** - the panel matches Torn's own dark UI and tucks into a launcher button in the corner, so it feels like part of the site, not a bolted-on widget.
-- **Vault storage** - every synced item is kept permanently. Items stay after you delist or sell them, so you mark them Sold/Hidden instead of losing history.
-- **Mug-protection markup** - over-price your listings to deter buy-muggers, then have that markup automatically stripped from the prices shown in your thread. [Details below.](#mug-protection-markup)
-- **Per-section layout & two-level sorting** - configure weapons and armor independently; group by type/rarity/bonus and sort with a primary + secondary key.
-- **10 visual themes** - Neon Box, Gradient Banner, Split Bar, Thin Stripe, Classic Ledger, Modern Minimalist, Military Crate, Luxury Boutique, Slate Card, Spec Sheet.
-- **Live preview** - see the exact thread before copying.
-- **Per-item notes, bulk actions, export/import** - annotate items, set whole filtered selections at once, and back the vault up as JSON.
+- **Built into the forum page.** A row in your **My Forums** list opens the tool right inside the page. It uses Torn's own colours, so it follows dark and light mode automatically.
+- **Three sync sources.** Bazaar, inventory or Item Market, each labelled with the API key level it needs.
+- **Permanent vault.** Every ranked-war item you sync is kept. Mark items Sold or Hidden instead of losing them when they leave your bazaar.
+- **14 designs**, each with curated palettes, colour pickers, corner radius and spacing options.
+- **Auto-split.** Long shops are split into numbered images at clean breaks between items, with clear file names.
+- **Mug-protection markup.** Pad your listings against buy-muggers and have the padding stripped from the prices in your images. [Details below.](#mug-protection-markup)
+- **Two-level sorting and grouping**, set separately for weapons and armor.
+- **Works in Torn PDA.** Uses PDA's API key automatically, and saves images through the phone's share sheet.
 
 ```mermaid
 flowchart LR
-    K["Your API key"] --> API["Torn API"]
-    API --> Sync["Sync"]
-    Sync --> Vault["Permanent vault"]
-    Vault --> Output["Output: theme, grouping, prices"]
-    Output --> Thread["Styled forum thread"]
+    K["API key"] --> S["Sync<br/>bazaar · inventory · item market"]
+    S --> V["Vault<br/>prices · status · notes"]
+    V --> O["Output<br/>design · palette · sorting"]
+    O --> I["PNG images<br/>auto-split, numbered"]
+    I --> P["Torn forum post"]
 ```
-
-### At a glance
-
-| Tab | What you do here |
-|---|---|
-| **Sync** | Paste your key, scan bazaar or Item Market, back up or restore. |
-| **Vault** | Search, filter, set prices, statuses, and notes per item. |
-| **Output** | Header, per-section grouping and sorting, theme, then generate. |
-| **Config** | Sync source, mug-protection markup, display toggles. |
 
 ---
 
-## The panel
+## Where it lives
 
-The whole tool lives in one draggable panel on `forums.php`, opened from a launcher button in the bottom-left corner. Four tabs:
+The script adds one row to your **My Forums** list, right after **My Company** (or before **Donator Forum** if you have no company). Click it to open the tool inside the page; click again to close it. The row's count shows how many items are currently active in your vault.
+
+<div align="center">
+<img src="assets/forum-row.png" alt="The RW ThreadSmith row in the My Forums list, in Torn's dark and light themes" width="820">
+<br><sub>The same row in Torn's dark and light mode. Everything is styled from Torn's own theme variables.</sub>
+</div>
+
+### The four tabs
 
 <table>
   <tr>
-    <td align="center" width="50%">
-      <img src="assets/sync2.png" alt="Sync tab" width="400"><br>
-      <sub><b>Sync</b> - paste your API key, scan your bazaar or Item Market, see vault status and backup/restore.</sub>
+    <td align="center" width="50%" valign="top">
+      <img src="assets/panel-load.png" alt="Sync tab" width="380"><br>
+      <sub><b>Sync</b>: your API key, the key level the chosen source needs, vault status, backup and restore.</sub>
     </td>
-    <td align="center" width="50%">
-      <img src="assets/vault2.png" alt="Vault tab" width="400"><br>
-      <sub><b>Vault</b> - search, filter by bonus/rarity/status, set prices, statuses and notes per item.</sub>
+    <td align="center" width="50%" valign="top">
+      <img src="assets/panel-items.png" alt="Vault tab" width="380"><br>
+      <sub><b>Vault</b>: search, filter, bulk actions, and per-item status, price and notes.</sub>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <img src="assets/output2.png" alt="Output tab" width="400"><br>
-      <sub><b>Output</b> - thread header, per-section grouping &amp; sorting, theme, item images, filters, then generate.</sub>
+    <td align="center" width="50%" valign="top">
+      <img src="assets/panel-gen.png" alt="Output tab" width="380"><br>
+      <sub><b>Output</b>: header text, layout and sorting, design, palette, colours and image options.</sub>
     </td>
-    <td align="center" width="50%">
-      <img src="assets/config2.png" alt="Config tab" width="400"><br>
-      <sub><b>Config</b> - sync source, mug-protection markup, display toggles.</sub>
+    <td align="center" width="50%" valign="top">
+      <img src="assets/panel-cfg.png" alt="Config tab" width="380"><br>
+      <sub><b>Config</b>: sync source, vault card display, mug-protection markup, image options.</sub>
     </td>
   </tr>
 </table>
@@ -92,224 +88,296 @@ The whole tool lives in one draggable panel on `forums.php`, opened from a launc
 
 ## Installation
 
-You need a userscript manager first.
+You need a userscript manager, or the Torn PDA app.
 
-| Browser | Recommended manager |
+| Where | What to use |
 |---|---|
-| Chrome / Edge / Brave | [Tampermonkey](https://www.tampermonkey.net/) |
-| Firefox | [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://www.greasespot.net/) |
+| Chrome, Edge, Brave, Opera | [Tampermonkey](https://www.tampermonkey.net/) |
+| Firefox | [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/) |
 | Safari | [Tampermonkey](https://www.tampermonkey.net/) |
+| Phone | [Torn PDA](https://github.com/Manuito83/torn-pda) (see [Torn PDA](#torn-pda)) |
 
-Then:
-
-1. **[⬇ Install from Greasy Fork](https://greasyfork.org/scripts/575393)** - your manager will prompt to confirm.
+1. **[⬇ Install from Greasy Fork](https://greasyfork.org/scripts/575393)** and confirm in your manager.
 2. Open any page on `torn.com/forums.php`.
-3. The **⚔ launcher button** appears in the bottom-left corner. Click it to open the panel.
+3. Click **RW ThreadSmith** in your **My Forums** list.
 
 > [!IMPORTANT]
-> The script only runs on `torn.com/forums.php`. It touches no other page or site.
+> The script only runs on `torn.com/forums.php`. The first time you generate images, Tampermonkey may ask to allow connections to Google Fonts (for the design typefaces) and `www.torn.com` (for item artwork). Allow them once.
 
 ---
 
 ## Quickstart
 
-### 1. Get a Torn API key
+### 1. Sync your items
 
-**Torn → Settings → API Keys.** The level you need depends on your sync source:
+Open the **Sync** tab, paste your API key and press **Sync**. Choose where to sync from in **Config → Sync Source**:
 
-- **Bazaar sync** (default): **Public Only** is enough.
-- **Item Market sync**: a **Limited** access key is required.
+| Source | What it reads | Prices |
+|---|---|---|
+| **Bazaar** (default) | Your bazaar listings | Your bazaar prices |
+| **Inventory** | Primary, Secondary, Melee and Defensive items in your inventory | None, set them in the Vault |
+| **Item Market** | Your Item Market listings | Your Item Market prices |
 
-### 2. Sync your items
+Only **ranked-war items** are kept: yellow, orange or red rarity with at least one bonus. Plain and white items are skipped. Faction-owned armory items are skipped on inventory syncs.
 
-Open the launcher, go to the **Sync** tab, paste your key, hit **Sync**.
+Syncing is paced at about 85 requests per minute to protect your key. Items already in the vault need no extra lookup, so later syncs are fast. You can cancel at any time and keep what was fetched.
 
-- **Bazaar mode** fetches each item's stats and bonuses individually. Items with no bonuses are skipped automatically.
-- **Item Market mode** (toggle in Config) pulls all listings in paginated batches - stats and bonuses come inline, so it's faster for large inventories.
+### 2. Review the vault
 
-Syncing is rate-limited (~85 req/min) to protect your key. A progress bar tracks it; you can cancel anytime and keep what's already fetched.
+The **Vault** tab lists every synced item with its rarity, stats, bonuses and whether it is currently listed.
 
-### 3. Review your vault
+- **Status**: `Active` items appear in your images, `Sold` items can show as sold, `Hidden` items are left out.
+- **Price**: leave it blank to use the automatic price (your listing price with [mug markup](#mug-protection-markup) removed, shown as `Auto: ...`), or type your own such as `5m`, `1.5b` or `750k`.
+- **Note**: turn on the notes field in Config to annotate any item. Notes can also appear in the images.
 
-The **Vault** tab lists every synced item with its rarity color, stats, bonuses, and listing status.
+Bulk actions apply to whatever the current search and filters show.
 
-- **Status** - `Active` items appear in threads, `Sold` show a SOLD badge (optional), `Hidden` are excluded.
-- **Price** - leave blank to use the automatic price (your listing price with [mug markup](#mug-protection-markup) stripped, shown as `Auto: …`), or type an override like `5m`, `1.5b`, `750k`. A typed price is used exactly and is never touched by the markup.
-- **Note** - enable the notes field in Config, then annotate any item.
+### 3. Generate images
 
-Search, filters (bonus / rarity / status), and sort handle large inventories. Bulk actions apply to whatever is currently filtered.
+On the **Output** tab, write a title and description, set up layout and sorting, pick a design and palette, then press **Generate images**. A preview of every image appears straight away, and changing any setting re-renders it live.
 
-### 4. Generate your thread
+<div align="center">
+<img src="assets/panel-generated.png" alt="Generated image preview in the Output tab" width="420">
+</div>
 
-On the **Output** tab: set a title/description, configure grouping and sorting per section, pick a theme, then **Preview** or **Generate & Copy**. Paste the result into your forum post's **HTML source view**.
+### 4. Post it
 
-> [!TIP]
-> Torn's forum editor accepts raw HTML. Use the `<>`/Source button, not the visual editor.
+Press **Save images** (or **Save / share** in Torn PDA), then add the images to your Torn post **in order, part 1 first**. On desktop you can drag them straight into the post editor.
 
 ---
 
-## Mug protection markup
+## Designs
 
-A common Torn tactic: list an item higher than you actually want, so a buy-mugger can't snipe it cheap - if someone does buy, the inflated price covers the mug. The downside is your listing price is no longer the price you want to advertise in a thread.
+Fourteen designs, each built for images rather than squeezed into forum HTML. Every one has its own typography and details, three or four curated palettes, and full colour pickers.
 
-This setting fixes it. In **Config → Mug Protection Markup**, enter the percentage you pad your listings by. Every output price then has that markup removed automatically.
+<table>
+  <tr>
+    <td align="center" width="50%" valign="top"><img src="assets/design-glow.png" alt="Neon Box" width="380"><br><b>Neon Box</b><br><sub>Glowing rarity borders and pill prices on a dark grid.</sub></td>
+    <td align="center" width="50%" valign="top"><img src="assets/design-banner.png" alt="Gradient Banner" width="380"><br><b>Gradient Banner</b><br><sub>Wide bands that bleed from the item's rarity colour.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="assets/design-split.png" alt="Split Bar" width="380"><br><b>Split Bar</b><br><sub>Condensed headline over a stats bar, split by a rarity line.</sub></td>
+    <td align="center" valign="top"><img src="assets/design-stripe.png" alt="Thin Stripe" width="380"><br><b>Thin Stripe</b><br><sub>Dense two-line rows for big inventories.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="assets/design-ledger.png" alt="Classic Ledger" width="380"><br><b>Classic Ledger</b><br><sub>Framed parchment, serif type and dotted price leaders.</sub></td>
+    <td align="center" valign="top"><img src="assets/design-minimal.png" alt="Modern Minimalist" width="380"><br><b>Modern Minimalist</b><br><sub>Quiet cards, heavy prices, soft rarity tags.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="assets/design-tactical.png" alt="Military Crate" width="380"><br><b>Military Crate</b><br><sub>Stencil type, riveted plates and hazard stripes.</sub></td>
+    <td align="center" valign="top"><img src="assets/design-boutique.png" alt="Luxury Boutique" width="380"><br><b>Luxury Boutique</b><br><sub>Italic serif, gold hairlines and generous space.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="assets/design-slate.png" alt="Slate Card" width="380"><br><b>Slate Card</b><br><sub>Clean dark cards with type badges and bonus chips.</sub></td>
+    <td align="center" valign="top"><img src="assets/design-table.png" alt="Compact Table" width="380"><br><b>Compact Table</b><br><sub>Columns that size to your data, for scanning many items.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="assets/design-spec.png" alt="Spec Sheet" width="380"><br><b>Spec Sheet</b><br><sub>Datasheet on a blueprint grid, with stat bars.</sub></td>
+    <td align="center" valign="top"><img src="assets/design-swiss.png" alt="Swiss Grid" width="380"><br><b>Swiss Grid</b><br><sub>Strict grid, heavy rules and big index numbers.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="assets/design-receipt.png" alt="Thermal Receipt" width="380"><br><b>Thermal Receipt</b><br><sub>A printed till receipt with total, value and barcode.</sub></td>
+    <td align="center" valign="top"><img src="assets/design-brutal.png" alt="Neo Brutalist" width="380"><br><b>Neo Brutalist</b><br><sub>Flat rarity strips, thick ink borders and hard shadows.</sub></td>
+  </tr>
+</table>
 
-It's a true reversal, not a flat subtraction - a +20% markup is divided back out by 1.20:
+### Make it yours
 
-| You listed | Markup | Thread shows |
+Each design remembers its own settings:
+
+| Setting | What it changes |
+|---|---|
+| **Palette** | Three or four curated colour sets per design |
+| **Colours** | Pickers for background, cards, text, accent, price and bonus colour (depending on the design) |
+| **Corners** | Corner radius, within a range that suits the design |
+| **Spacing** | Compact, Regular or Airy |
+| **Reset this design** | Back to the design's defaults |
+
+<div align="center">
+<img src="assets/palettes-neon-box.png" alt="Neon Box in its Toxic, Synthwave and Ice palettes" width="820">
+<br><sub>Neon Box in its three palettes: Toxic, Synthwave and Ice.</sub>
+</div>
+
+Text colours are checked against their background automatically, so rarity colours stay readable on light palettes too.
+
+### Image options
+
+| Option | Default | What it does |
+|---|---|---|
+| Prices | Full | `$250,000,000` or short `$250m` |
+| Split at | Medium | Image height before splitting: 1600, 2400 or 3600 px (saved at 2x) |
+| Show item images | Off | Adds each item's in-game artwork, loaded from Torn |
+| Show date and item count | On | Adds today's date and the item count to the header |
+| "Made with ThreadSmith" line | Off | A small credit at the bottom |
+| Include item notes | Off | Vault notes appear under each item (Config tab) |
+| Show item count in section headers | On | Adds counts to group and section titles (Config tab) |
+
+---
+
+## Auto-split
+
+Long shops are split into several images, so nothing turns into an unreadable sliver on a phone and no file gets huge.
+
+- Splits only happen **between items**. A heading never sits alone at the bottom of an image.
+- Each continuation image repeats the shop name and part number at the top, and repeats the current section or group heading marked **(cont.)**.
+- Every image ends with **Part 2 of 5 · Continued in part 3**, or **End of list** on the last one.
+- Files are named so they sort in order: `my-shop_2026-10-19_part-1-of-5.png`. Lists of 10 or more parts are zero-padded (`part-01-of-12`).
+
+---
+
+## API keys
+
+Create a key in Torn under **Settings → API Keys**. Each sync source needs a different minimum level:
+
+| Sync source | Minimum key level |
+|---|---|
+| Bazaar | Any key, including **Public** |
+| Inventory | **Minimal** or higher |
+| Item Market | **Limited** or higher |
+
+Before every sync the script checks your key's level, and Custom keys are checked against their actual selections. If the key is too limited, sync stops with an explanation instead of failing halfway. Torn's API errors (wrong key, paused key, too many requests and so on) are explained in plain language and stay on screen.
+
+```mermaid
+flowchart TD
+    A["Press Sync"] --> B{"Key level enough<br/>for this source?"}
+    B -- "No" --> C["Stops and explains<br/>which level is needed"]
+    B -- "Yes" --> D["Fetch listings"]
+    D --> E{"Yellow, orange or red<br/>with a bonus?"}
+    E -- "No" --> F["Skipped"]
+    E -- "Yes" --> G["Added to or refreshed<br/>in the vault"]
+```
+
+> [!TIP]
+> Your key is stored only in your browser, and is only ever sent to `api.torn.com`.
+
+---
+
+## Torn PDA
+
+RW ThreadSmith works in the [Torn PDA](https://github.com/Manuito83/torn-pda) app.
+
+- **Your PDA key is used automatically** when you have not entered one. If your PDA key lacks access for a sync source, paste a different key into the Sync tab. It is saved and takes priority, and the PDA key is never stored over it.
+- **Saving images** opens the phone's share sheet, so you can save to your photos or send the file anywhere.
+- The panel is the same as on desktop and follows Torn's theme.
+
+---
+
+## Mug-protection markup
+
+A common Torn tactic is to list an item higher than you really want, so a buy-mugger cannot snipe it cheaply. The downside is that your listing price is no longer the price you want to advertise.
+
+In **Config → Mug Protection Markup**, enter the percentage you pad your listings by. Every price in your images then has that markup removed. It is a true reversal, not a flat subtraction: a 20% markup is divided back out by 1.20.
+
+| You listed | Markup | Images show |
 |---|---|---|
 | 120M | 20% | 100M |
 | 600M | 20% | 500M |
 | 36M | 20% | 30M |
 
-- **Set it once.** Applies to every item, including ones synced later - no button to press, nothing to track after a re-sync.
-- **Non-destructive.** Your stored listing price is never overwritten; the markup is applied only when the price is shown. Set it back to `0` and prices revert instantly.
-- **Rounded to the nearest 1M** so thread prices stay clean.
-- **Manual prices are exempt** - a price you typed yourself is used as-is.
+- **Set it once.** It applies to every item, including ones synced later.
+- **Non-destructive.** Your stored listing price is never changed. Set it back to `0` and prices revert.
+- **Rounded to the nearest 1M** so prices stay clean.
+- **Manual prices are exempt.** A price you typed yourself is used exactly as written.
 
 ---
 
-## Vault explained
+## The vault
 
-- **Items stay after you delist them.** Removing an item from your bazaar/Item Market in Torn doesn't remove it from the vault. Mark it `Sold` or `Hidden` instead - your thread history is preserved.
-- **Syncing updates prices, not history.** Each sync refreshes listing prices and adds new items it hasn't seen; this is why syncing gets faster over time.
-- **The vault never auto-deletes.** Only you remove items, via ✕ or bulk remove.
-- **Listed vs Vault.** Each item shows `Listed` (currently in Torn) or `Vault` (not currently listed), updated every sync.
+- **Items stay after you delist them.** Mark them `Sold` or `Hidden` instead, and your history is kept.
+- **Syncing refreshes prices, not history.** Each sync updates listing prices and adds new items.
+- **Listed or Vault.** Each item shows `Listed` (currently in your bazaar or Item Market) or `Vault` (not currently listed).
+- **Ranked-war items only.** Anything that is not yellow, orange or red is removed from the vault automatically, including from imported backups.
 
----
+### Vault filters
 
-## Themes
-
-| Theme | Style |
+| Control | What it does |
 |---|---|
-| **Neon Box** | Rarity-colored border on a dark card. High contrast. |
-| **Gradient Banner** | Horizontal gradient bleeding from the rarity color. Clean, wide. |
-| **Split Bar** | Two-tone card with a rarity underline. Structured. |
-| **Thin Stripe** | Dense rows with a left rarity stripe. Space-efficient. |
-| **Classic Ledger** | Parchment tones, serif type, dashed dividers. Vintage invoice. |
-| **Modern Minimalist** | Solid rarity-colored cards. Very clean. |
-| **Military Crate** | Heavy bold font, dark headers, hard edges. |
-| **Luxury Boutique** | Italic serif, gold price text, refined spacing. |
-| **Slate Card** | Professional dark card with a left rarity tab. Restrained, readable. |
-| **Spec Sheet** | Manufacturer-datasheet look with labelled stats. Technical, premium. |
-
-All themes use the item's rarity color (Yellow / Orange / Red / White) as the accent. Armor can use its own theme or match weapons.
+| Search | Match item name |
+| Bonus | Only items with a specific bonus |
+| Rarity | Yellow, Orange or Red |
+| Status | Active, Sold or Hidden |
+| Sort | Name, Rarity, Type or Status |
+| Bulk | Set the filtered items to Active, Sold or Hidden, or remove them |
 
 ---
 
 ## Layout and sorting
 
-Weapons and armor have fully independent controls on the Output tab - e.g. sort weapons by value while sorting armor by rarity.
+Weapons and armor have separate controls on the Output tab. For example, you can sort weapons by value and armor by rarity.
 
 ### Group by
 
 | Group by | Result |
 |---|---|
-| No grouping (flat list) | One continuous list, no headers |
-| Weapon type | Primary, Secondary, Melee, Other (weapons only) |
-| Rarity | Yellow, Orange, Red, White |
-| Weapon bonus | One group per primary bonus, headed by the bonus name |
+| No grouping | One continuous list |
+| Weapon type | Primary, Secondary, Melee, Other |
+| Rarity | Yellow, Orange, Red |
+| Weapon bonus | One group per bonus, headed by the bonus name |
 
 ### Sort by, then by
 
-Each section has a primary **Sort by** and an optional **then by**. The secondary only breaks ties the primary leaves, and item name is always the final tiebreak. Picking the same field twice is blocked.
+Each section has a primary **Sort by** and an optional **then by**. The second key only breaks ties the first leaves, and item name is always the final tiebreak.
 
 | Sort option | Available in |
 |---|---|
-| Value: high→low / low→high | Weapons & Armor |
-| Name: A→Z / Z→A | Weapons & Armor |
-| Rarity / Rarity (reversed) | Weapons & Armor |
-| Weapon bonus: A→Z | Weapons & Armor |
-| Bonus count: most first | Weapons & Armor |
-| Quality: high→low | Weapons & Armor |
+| Value: high to low, low to high | Weapons and armor |
+| Name: A to Z, Z to A | Weapons and armor |
+| Rarity | Weapons and armor |
+| Weapon bonus: A to Z | Weapons and armor |
+| Bonus count: most first | Weapons and armor |
+| Quality: high to low | Weapons and armor |
 | Weapon type | Weapons only |
-| Damage: high→low | Weapons only |
-| Armor rating: high→low | Armor only |
+| Damage: high to low | Weapons only |
+| Armor rating: high to low | Armor only |
 
-Unpriced items (shown as Offer) and items missing the sorted stat sink to the bottom of that sort.
+Unpriced items (shown as Offer) and items missing the sorted stat sink to the bottom.
 
 ### Section options
 
 | Setting | What it does |
 |---|---|
-| Show only | Restrict output to one category |
-| Separate armor into its own section | Armor gets its own group, sort, heading, and theme |
-| Armor heading | Custom heading text for the armor section |
-| Armor theme | Different theme for armor, or match weapons |
-| Separate double-bonus gear | Pulls 2+ bonus items into their own block |
-| Include SOLD items | Whether Sold items appear in the thread |
-| Show item images | Adds each item's in-game image to its card, hotlinked from Torn's CDN (all themes except Thin Stripe) |
-
----
-
-## Vault filters
-
-| Control | What it does |
-|---|---|
-| Search | Match item name |
-| Bonus type | Show only items with a specific bonus |
-| Rarity | Yellow / Orange / Red / White |
-| Status | Active / Sold / Hidden |
-| Sort | Name, Rarity, Type, Status |
-
----
-
-## Config options
-
-| Option | Default | Description |
-|---|---|---|
-| Scan Item Market instead of Bazaar | Off | Sync fetches Item Market listings instead of the Bazaar. Requires a Limited API key. |
-| Mug Protection Markup | 0 | Percentage you pad listings by; output prices have it removed (÷ (1 + %/100), rounded to nearest 1M). Manual prices exempt. 0 = off. |
-| Show per-item notes field | Off | Reveals a note input on each vault card. |
-| Compact item cards | Off | Hides stats/bonuses from vault cards to save space. |
-| Include item notes in output | Off | Notes appear in the generated thread. |
-| Show item count in section headers | On | Adds a "(12)"-style count to section headings. |
+| Show only | Limit the images to one category |
+| Separate armor | Armor gets its own section, grouping, sorting and heading |
+| Separate double-bonus gear | Items with two or more bonuses get their own block |
+| Include SOLD items | Whether sold items appear at all |
+| Move SOLD items to the bottom | Sold items get their own section with a custom heading |
 
 ---
 
 ## Backup and restore
 
-**Export JSON** (Sync tab) downloads your vault, prices, notes, and markup setting as a `.json`. **Import JSON** loads it back - any browser, any machine. Importing **merges** with your existing vault (matching UIDs overwrite local copies).
+**Export JSON** on the Sync tab downloads your vault, prices, notes and markup setting. **Import JSON** loads it back on any browser or machine, and merges with your current vault (matching items are overwritten).
 
-- **Clear Prices/Notes** wipes manual prices and notes, keeps vault items.
+- **Clear Prices/Notes** wipes manual prices and notes but keeps the items.
 - **Clear Vault** removes everything.
 
 > [!CAUTION]
-> Clear Vault is irreversible and deletes all items, prices, notes, and statuses. Export a backup first.
+> Clear Vault cannot be undone. Export a backup first.
 
 ---
 
 ## FAQ
 
+**Where did the floating button go?**
+Since v5 the tool lives in your **My Forums** list on the forum page, as the **RW ThreadSmith** row. Click it to open the panel.
+
 **Nothing shows up after syncing.**
-Check your API key matches your sync source (Public for Bazaar, Limited for Item Market). The script only stores items that have weapon/armor bonuses - plain unmodded items are skipped on purpose.
+Only ranked-war items are kept: yellow, orange or red rarity with at least one bonus. White items and plain gear are skipped on purpose. Also check that your key's level matches your sync source (see [API keys](#api-keys)); the Sync tab tells you if it doesn't.
 
-**My weapons are on the Item Market, not the Bazaar.**
-Enable **Scan Item Market instead of Bazaar** in Config before syncing, and use a Limited key.
+**My items are in my inventory, not my bazaar.**
+Switch **Config → Sync Source** to **Inventory** (needs a Minimal key or higher). Inventory has no prices, so type them in the Vault. Torn caches inventory for up to an hour, so very recent changes may take a while to appear.
 
-**My thread prices are higher than what I want to sell for.**
-You pad your listings for mug protection. Set **Mug Protection Markup** in Config to your padding percentage. See [Mug protection markup](#mug-protection-markup).
+**How do I put the images in my post?**
+Save the images, then add them to your Torn post in order, part 1 first. On desktop you can drag them into the editor. In Torn PDA, use the share sheet to save them to your photos first.
 
-**The markup removed too much / too little.**
-It divides by your percentage (the correct reversal of a markup), not subtract it. Make sure the percentage matches what you actually pad by. Output is rounded to the nearest 1M.
+**The prices are higher than I want to sell for.**
+You pad your listings for mug protection. Set **Mug Protection Markup** in Config to your padding percentage. See [Mug-protection markup](#mug-protection-markup).
 
-**My Torn prices changed but the thread shows the old price.**
-Sync again to refresh listing prices. A manual price you typed overrides the listing price until you clear it.
+**The fonts look plain.**
+The designs load their typefaces from Google Fonts. If your userscript manager asked for permission, allow the connection. If fonts cannot load, the images still render with standard system fonts.
 
-**How do "Sort by" and "then by" interact?**
-Primary decides the order; secondary only breaks ties the primary left; name is the final tiebreak. Order matters (bonus-then-value ≠ value-then-bonus). The same field can't be picked twice.
-
-**The panel opened off-screen / too tall.**
-It clamps into view on open, on tab switch, and on window resize. Use **Reset** in the panel header to snap it back to the bottom-left. Drag it by the title bar to reposition; the position is remembered.
-
-**Can I use this on multiple characters?**
-The vault is stored per browser profile. Different profiles = separate vaults. Use Export/Import to move or separate inventories.
-
-**How do I paste the output into a forum post?**
-Use the forum editor's HTML source mode (`<>` / "Source"), then paste there - not the visual editor.
-
-**Can I run this outside forums.php?**
-No, it's restricted to `torn.com/forums.php` by design - that's where threads are written.
+**Can I use this on more than one character?**
+The vault is stored per browser profile. Use Export and Import to move or separate inventories.
 
 ---
 
@@ -317,15 +385,62 @@ No, it's restricted to `torn.com/forums.php` by design - that's where threads ar
 
 | Permission | Why |
 |---|---|
-| `GM_xmlhttpRequest` | Fetch item data from the Torn API (bypasses CORS) |
-| `GM_setValue` / `GM_getValue` | Persist vault, prices, notes, and settings |
-| `GM_setClipboard` | Copy generated HTML on Generate |
+| `GM_setValue` / `GM_getValue` | Store your vault, prices, notes and settings |
+| `GM_xmlhttpRequest` | Fallback for network requests when a direct request is blocked |
+| `GM_setClipboard` | Clipboard support |
+| `@connect api.torn.com` | Your listings and item details |
+| `@connect www.torn.com` | Item artwork for images |
+| `@connect fonts.googleapis.com`, `fonts.gstatic.com` | Typefaces for the designs |
 
-No data is sent anywhere except `api.torn.com`. Nothing is collected. No external servers.
+Nothing is sent anywhere except the Torn API, Torn's own item images and Google Fonts. No data is collected and there are no external servers. Images are rendered entirely in your browser.
 
 ---
 
 ## Changelog
+
+### v6.2.1
+
+**Changed**
+- New anvil icon for the script, matching the one on the forum row. It now shows in Tampermonkey and on Greasy Fork instead of the default placeholder.
+
+### v6.2.0
+
+The first release since v4.8.0. Everything from v4.9 to v6.2 ships together here.
+
+**Added**
+- **Image output.** Shops are rendered as high-resolution PNG images instead of HTML. That gets around the forum editor, character limits and broken layouts on phones.
+- **14 designs built for images:** Neon Box, Gradient Banner, Split Bar, Thin Stripe, Classic Ledger, Modern Minimalist, Military Crate, Luxury Boutique, Slate Card, Compact Table, Spec Sheet, Swiss Grid, Thermal Receipt and Neo Brutalist.
+- **Per-design customization:** curated palettes, colour pickers, corner radius and spacing, remembered separately for each design.
+- **Auto-split** into numbered images at clean breaks between items, with continuation headings, part markers and file names that sort in order.
+- **Live preview** that re-renders as you change settings, with per-image save buttons.
+- **Inventory sync** as a third sync source (Primary, Secondary, Melee and Defensive).
+- **Torn PDA support:** automatic use of the PDA key, and saving through the phone's share sheet.
+- **Key level check** before every sync, with plain-language explanations for Torn API errors.
+- **Item artwork** in images, using the item's real Torn ID stored at sync time.
+- Image options: full or short prices, split height, date and item count in the header, optional credit line.
+- **Move SOLD items to the bottom** in their own section, with a custom heading.
+
+**Changed**
+- **The tool now lives inside the forum page** as a row in your My Forums list, styled with Torn's own theme variables so it follows dark and light mode. The floating launcher and draggable panel are gone.
+- Sync source is now a dropdown (Bazaar, Inventory, Item Market) labelled with the key level each needs.
+- Network requests use a direct request first and fall back to the userscript manager, so the script works the same in Tampermonkey, Violentmonkey and Torn PDA.
+- Sync progress only counts items that actually need an API lookup.
+- Sync errors stay on screen instead of disappearing after a moment.
+- Custom checkboxes, sliders, colour swatches and scrollbars that match Torn's UI.
+
+**Removed**
+- HTML thread output and the HTML-only options (Copy HTML, armor theme).
+- The Mobile Table design. Images make mobile-specific layouts unnecessary.
+
+**Fixed**
+- **White items are no longer treated as ranked-war items** just because they have a bonus. They are skipped on sync and removed from existing vaults and imports.
+
+### v4.9.0 to v4.11.0 (not released)
+
+- Added a Mobile Table theme for phones (since replaced by image output).
+- Themes wrapped name and price onto separate lines on narrow screens.
+- Added the option to move SOLD items into their own section at the bottom.
+- Tightened header padding and stopped rendering an empty title block.
 
 ### v4.8.0
 
@@ -335,36 +450,34 @@ No data is sent anywhere except `api.torn.com`. Nothing is collected. No externa
 ### v4.7.0
 
 **Added**
-- **Item images** - an optional "Show item images" toggle on the Output tab adds each weapon/armor's in-game image to its card, hotlinked from Torn's own CDN (no hosting, no setup). Works across every theme except Thin Stripe (too dense to fit an image cleanly).
+- **Item images**: an optional "Show item images" toggle on the Output tab adds each weapon or armor's in-game image to its card, hotlinked from Torn's own CDN. Works in every theme except Thin Stripe.
 
 ### v4.6.0
 
 **Added**
-- Two new themes: **Slate Card** (professional dark card with a left rarity tab) and **Spec Sheet** (manufacturer-datasheet look with labelled stats).
+- Two new themes: **Slate Card** and **Spec Sheet**.
 
 **Changed**
-- **Themes are now mobile-friendly** - every design wraps cleanly on phones instead of squeezing name and price onto one cramped line.
-- **Classic Ledger** redrawn in clean serif (no more monospace); **Military Crate** moved to a phone-safe heavy font.
+- Themes are mobile-friendly and wrap cleanly on phones.
+- Classic Ledger redrawn in a clean serif; Military Crate moved to a phone-safe heavy font.
 - New-theme headers are centered to match the rest.
 
 **Removed**
-- Retro Terminal and Frosted Glass themes (Frosted Glass's blur never rendered in the forum). Theme count stays at 10.
+- Retro Terminal and Frosted Glass themes (Frosted Glass's blur never rendered in the forum).
 
 ### v4.5.0
 
 **Added**
-- **Mug Protection Markup** (Config): strip the mug-protection padding from your listing prices in the output automatically - set once, applies to every item (old and newly synced), non-destructive, rounded to the nearest 1M, manual prices exempt.
+- **Mug Protection Markup** in Config: strip the padding from your listing prices in the output automatically.
 
 **Changed**
-- **Redesigned the panel to match Torn's native dark-mode UI** - striped title bar, tabbed sub-nav with a blue active indicator, native button styling, and larger, higher-contrast text (panel text now meets WCAG AA).
-- **New launcher**: a round button in the bottom-left opens the panel (anchored bottom-left) and hides while it's open. The panel stays draggable, remembers its position, and re-clamps into view on tab switch and window resize.
-- Vault price field now holds only your manual override; blank uses the automatic post-markup price. The markup setting is included in Export/Import.
+- Panel redesigned to match Torn's dark UI, with a launcher button in the bottom-left corner.
+- The Vault price field holds only your manual override; blank uses the automatic price. The markup setting is included in Export and Import.
 
 ### v4.4.0
 
 **Added**
-- Two-level sorting per section (primary **Sort by** + optional **then by**, with name as the final tiebreak).
-- Same-field protection in the "then by" list. `Rarity (reversed)` sort option.
+- Two-level sorting per section (Sort by plus optional then by, with name as the final tiebreak), same-field protection, and a Rarity (reversed) sort.
 
 **Changed**
 - Sort comparators rebuilt to chain cleanly.
@@ -372,43 +485,40 @@ No data is sent anywhere except `api.torn.com`. Nothing is collected. No externa
 ### v4.3.0
 
 **Added**
-- Independent layout/sorting per section; **Group by** (none / type / rarity / bonus); expanded sort options; **Separate armor** with its own grouping/sorting/heading/theme; **Separate double-bonus gear**; unpriced/missing-stat items sink in value/stat sorts.
-
-**Changed**
-- Output "Layout" became a fuller "Layout & Sorting" panel; old single grouping dropdown superseded (saved grouping carries over).
+- Independent layout and sorting per section; Group by (none, type, rarity, bonus); more sort options; Separate armor with its own grouping, sorting, heading and theme; Separate double-bonus gear; unpriced items sink in value sorts.
 
 ### v4.2.0
 
 **Added**
-- Item Market sync mode (paginated `/v2/user/itemmarket`, faster for large inventories; requires a Limited key).
+- Item Market sync mode (paginated `/v2/user/itemmarket`, needs a Limited key).
 
 **Changed**
-- Config tab reorganised with a Sync Source section; API-key note updated.
+- Config tab reorganised with a Sync Source section.
 
 ### v4.1.0
 
 **Added**
-- Guide button; viewport-aware width; saved-position validation; drag clamping; SPA navigation guard.
+- Guide button, viewport-aware width, saved-position validation, drag clamping, SPA navigation guard.
 
 **Changed**
 - Raised z-index and contrast across the UI.
 
 **Fixed**
-- Frosted Glass Safari prefix; unified note handling; entity-encoded special characters and emoji.
+- Frosted Glass Safari prefix, unified note handling, entity-encoded special characters and emoji.
 
 ### v4.0.0
 
 **Added**
-- Permanent vault; status tracking; tabbed interface; search/filter/sort; bulk actions; per-item notes; live preview; Export/Import; listing-presence tracking; sync progress + summaries; vault/generation stats; compact mode; include-sold toggle.
+- Permanent vault, status tracking, tabbed interface, search, filter and sort, bulk actions, per-item notes, live preview, Export and Import, listing-presence tracking, sync progress and summaries, compact mode, include-sold toggle.
 
 **Changed**
-- Unified theme system; throttle 750→700ms; storage keys `rw_*`→`rwts_*`; MIT→GPL-3.0; full UI redesign.
+- Unified theme system, storage keys renamed from `rw_*` to `rwts_*`, MIT to GPL-3.0, full UI redesign.
 
 **Removed**
-- 24-hour cache expiry; auto-clear prices on sync.
+- 24-hour cache expiry and auto-clearing prices on sync.
 
 **Fixed**
-- Prices/notes persist across syncs; old cache auto-migrated.
+- Prices and notes persist across syncs; the old cache is migrated automatically.
 
 ---
 
@@ -416,4 +526,4 @@ No data is sent anywhere except `api.torn.com`. Nothing is collected. No externa
 
 GPL-3.0-or-later · Rowage [3926289] · 2026
 
-Free to use, modify, and redistribute under the terms of the GPL-3.0 license.
+Free to use, modify and redistribute under the terms of the GPL-3.0 license.
