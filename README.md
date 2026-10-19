@@ -15,8 +15,6 @@ Sync your bazaar, inventory or Item Market, price everything in one vault, and e
 
 [Install](#installation) &nbsp;·&nbsp; [Quickstart](#quickstart) &nbsp;·&nbsp; [Designs](#designs) &nbsp;·&nbsp; [API keys](#api-keys) &nbsp;·&nbsp; [Torn PDA](#torn-pda) &nbsp;·&nbsp; [FAQ](#faq) &nbsp;·&nbsp; [Changelog](#changelog)
 
-<img src="assets/design-boutique.png" alt="A shop image rendered in the Luxury Boutique design" width="420"> <img src="assets/design-brutal.png" alt="A shop image rendered in the Neo Brutalist design" width="420">
-
 </div>
 
 ---
