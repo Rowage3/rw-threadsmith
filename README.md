@@ -4,7 +4,7 @@
 
 # RW ThreadSmith
 
-**Sell your ranked-war gear with a forum post that looks designed, not pasted.**
+**Sell your ranked-war gear with a forum post that stands out, not another generic list.**
 Sync your bazaar, inventory or Item Market, price everything in one vault, and export polished images of your shop ready to drop into a Torn forum post.
 
 [![Version](https://img.shields.io/badge/version-6.2.1-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
