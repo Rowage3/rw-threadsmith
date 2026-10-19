@@ -17,8 +17,6 @@ Sync your bazaar, inventory or Item Market, price everything in one vault, and e
 
 <img src="assets/design-boutique.png" alt="A shop image rendered in the Luxury Boutique design" width="420"> <img src="assets/design-brutal.png" alt="A shop image rendered in the Neo Brutalist design" width="420">
 
-<sub>Two of the 14 designs. Every image in this README was rendered by the script itself.</sub>
-
 </div>
 
 ---
