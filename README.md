@@ -7,7 +7,7 @@
 **Sell your ranked-war gear with a forum post that stands out, not another generic list.**
 Sync your bazaar, inventory or Item Market, price everything in one vault, and export polished images of your shop ready to drop into a Torn forum post.
 
-[![Version](https://img.shields.io/badge/version-6.2.1-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
+[![Version](https://img.shields.io/badge/version-6.2.2-82c91e?style=flat-square&labelColor=222)](https://greasyfork.org/scripts/575393)
 [![License](https://img.shields.io/badge/license-GPL--3.0-74c0fc?style=flat-square&labelColor=222)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Torn.com-e0b73e?style=flat-square&labelColor=222)](https://www.torn.com/forums.php)
 [![Torn PDA](https://img.shields.io/badge/Torn%20PDA-supported-b197fc?style=flat-square&labelColor=222)](https://github.com/Manuito83/torn-pda)
@@ -227,7 +227,7 @@ Create a key in Torn under **Settings → API Keys**. Each sync source needs a d
 
 | Sync source | Minimum key level |
 |---|---|
-| Bazaar | Any key, including **Public** |
+| Bazaar | **Limited** or higher |
 | Inventory | **Minimal** or higher |
 | Item Market | **Limited** or higher |
 
@@ -393,6 +393,14 @@ Nothing is sent anywhere except the Torn API, Torn's own item images and Google 
 ---
 
 ## Changelog
+
+### v6.2.2
+
+**Changed**
+- **Bazaar sync now needs a Limited key or higher.** Torn made the bazaar a private selection in its November 2026 API update, and lower keys now get an empty bazaar. The Sync tab, the sync source list and the key check all reflect this.
+
+**Fixed**
+- If Torn returns an empty bazaar and the key level could not be checked, sync now stops with an explanation instead of marking every item in your vault as unlisted.
 
 ### v6.2.1
 
